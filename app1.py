@@ -6,9 +6,16 @@ import gdown
 # Set wide layout
 st.set_page_config(layout="wide")
 
-# Load dataset (assuming it's already downloaded)
-file_path = "your_data.csv"
+# Download the CSV file from Google Drive
+file_url = "https://drive.google.com/uc?id=1J4SLi_lDWUuxlA-fNITtEnBwfZzIKOY2"
+file_path = "bankruptcy_data.csv"
+gdown.download(file_url, file_path, quiet=False)
+
+# Load the dataset
 df = pd.read_csv(file_path)
+
+# Streamlit App Title
+st.title("📊 Bankruptcy Analysis Dashboard")
 
 # Filters
 bank_types = st.multiselect("Select Bank Type", df["Bank Type"].unique())
